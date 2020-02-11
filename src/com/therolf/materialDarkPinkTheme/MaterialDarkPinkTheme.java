@@ -1,3 +1,5 @@
+package com.therolf.materialDarkPinkTheme;
+
 import mdlaf.themes.AbstractMaterialTheme;
 import mdlaf.utils.MaterialBorders;
 import mdlaf.utils.MaterialColors;
@@ -12,14 +14,16 @@ import javax.swing.plaf.ColorUIResource;
 import javax.swing.plaf.InsetsUIResource;
 import java.awt.*;
 
-@SuppressWarnings("WeakerAccess")
-public class MaterialDarkTheme extends AbstractMaterialTheme {
+@SuppressWarnings("unused")
+public class MaterialDarkPinkTheme extends AbstractMaterialTheme {
 
     private static final ColorUIResource BACKGROUND_COLOR = MaterialColors.GRAY_900;
     private static final ColorUIResource TRANSPARENT = new ColorUIResource(new Color(0, 0, 0, 0));
-    public static final Color HIGHLIGHT_COLOR = MaterialColors.RED_A400;
-    public static final Color HIGHLIGHT_HOVER = HIGHLIGHT_COLOR.darker();
-    public static final ColorUIResource HIGHLIGHT_HOVER_COLOR = new ColorUIResource(HIGHLIGHT_HOVER);
+    private static final ColorUIResource HIGHLIGHT_COLOR = MaterialColors.RED_A400;
+    private static final Color HIGHLIGHT_HOVER = new ColorUIResource(HIGHLIGHT_COLOR.darker()); // need to be color class
+    private static final ColorUIResource HIGHLIGHT_HOVER_COLOR = new ColorUIResource(HIGHLIGHT_HOVER);
+
+    private static final BorderUIResource EMPTY_BORDER = new BorderUIResource(BorderFactory.createEmptyBorder());
 
     public static Border getInputFieldFocusedBorder() {
         return new MatteBorder(0, 0, 3, 0, HIGHLIGHT_HOVER);
@@ -35,18 +39,7 @@ public class MaterialDarkTheme extends AbstractMaterialTheme {
         return BorderFactory.createEmptyBorder(8, 12, 8, 12);
     }
 
-    public MaterialDarkTheme() {
-    }
-
-    @Override
-    public void installUIDefault(UIDefaults table) {
-        super.installUIDefault(table);
-
-        //noinspection SpellCheckingInspection
-        table.put("ComboBox.unfocusColor", TRANSPARENT);
-        table.put("ComboBox.focusColor", TRANSPARENT);
-        table.put("Button[border].enable", false);
-        table.put("Button[focus].color", TRANSPARENT);
+    public MaterialDarkPinkTheme() {
     }
 
     public void installTheme() {
@@ -95,25 +88,25 @@ public class MaterialDarkTheme extends AbstractMaterialTheme {
         super.installBorders();
         this.buttonBorder = new BorderUIResource(getButtonUnfocusedBorder());
         this.borderMenu = new BorderUIResource(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-        this.borderMenuBar = MaterialBorders.LIGHT_SHADOW_BORDER;
-        this.borderPopupMenu = MaterialBorders.LIGHT_LINE_BORDER;
-        this.borderSpinner = MaterialBorders.LIGHT_LINE_BORDER;
-        this.arrowButtonBorderSpinner = new BorderUIResource(BorderFactory.createEmptyBorder());
-        this.borderPanel = new BorderUIResource(BorderFactory.createEmptyBorder());
-        this.arrowButtonBorderScrollBar = new BorderUIResource(BorderFactory.createEmptyBorder());
-        this.borderSlider = new BorderUIResource(BorderFactory.createEmptyBorder());
+        this.borderMenuBar = EMPTY_BORDER;
+        this.borderPopupMenu = MaterialBorders.LIGHT_SHADOW_BORDER;
+        this.borderSpinner = EMPTY_BORDER;
+        this.arrowButtonBorderSpinner = EMPTY_BORDER;
+        this.borderPanel = EMPTY_BORDER;
+        this.arrowButtonBorderScrollBar = EMPTY_BORDER;
+        this.borderSlider = EMPTY_BORDER;
         this.cellBorderTableHeader = new BorderUIResource(BorderFactory.createCompoundBorder(MaterialBorders.LIGHT_LINE_BORDER, BorderFactory.createEmptyBorder(5, 5, 5, 5)));
-        this.borderToolBar = new BorderUIResource(BorderFactory.createEmptyBorder());
+        this.borderToolBar = EMPTY_BORDER;
         this.borderTextField = new BorderUIResource(getInputFieldUnfocusedBorder());
         this.borderTaskPane = this.borderPanel;
-        this.focusCellHighlightBorder = new BorderUIResource(BorderFactory.createEmptyBorder());
-        this.borderComboBox = new BorderUIResource(BorderFactory.createEmptyBorder());
-        this.borderItemList = new BorderUIResource(BorderFactory.createEmptyBorder());
+        this.focusCellHighlightBorder = EMPTY_BORDER;
+        this.borderComboBox = EMPTY_BORDER;
+        this.borderItemList = EMPTY_BORDER;
         this.tabInsetsTabbedPane = new InsetsUIResource(6, 10, 10, 10);
         this.selectedTabInsetsTabbedPane = new InsetsUIResource(6, 10, 10, 10);
-        this.borderFrameRootPane = new BorderUIResource(BorderFactory.createEmptyBorder());
+        this.borderFrameRootPane = EMPTY_BORDER;
         this.borderDialogRootPane = MaterialBorders.LIGHT_SHADOW_BORDER;
-        this.borderProgressBar = new BorderUIResource(BorderFactory.createEmptyBorder());
+        this.borderProgressBar = EMPTY_BORDER;
     }
 
     protected void installColor() {
@@ -174,17 +167,28 @@ public class MaterialDarkTheme extends AbstractMaterialTheme {
         this.selectionForegroundTextField = MaterialColors.BLACK;
         this.inactiveColorLineTextField = MaterialColors.WHITE;
         this.activeColorLineTextField = MaterialColors.RED_A400;
-        this.titleBackgroundGradientStartTaskPane = MaterialColors.GRAY_300;
-        this.titleBackgroundGradientEndTaskPane = MaterialColors.GRAY_500;
+        this.titleBackgroundGradientStartTaskPane = HIGHLIGHT_COLOR;
+        this.titleBackgroundGradientEndTaskPane = HIGHLIGHT_COLOR;
         this.titleOverTaskPane = MaterialColors.WHITE;
         this.specialTitleOverTaskPane = MaterialColors.WHITE;
-        this.backgroundTaskPane = BACKGROUND_COLOR;
+        this.backgroundTaskPane = HIGHLIGHT_HOVER_COLOR;
         this.borderColorTaskPane = BACKGROUND_COLOR;
         this.contentBackgroundTaskPane = BACKGROUND_COLOR;
         this.selectionBackgroundList = MaterialColors.GRAY_800;
         this.selectionForegroundList = MaterialColors.WHITE;
         this.backgroundProgressBar = this.backgroundTextField;
         this.foregroundProgressBar = MaterialColors.RED_A400;
+    }
+
+    @Override
+    public void installUIDefault(UIDefaults table) {
+        super.installUIDefault(table);
+
+        //noinspection SpellCheckingInspection
+        table.put("ComboBox.unfocusColor", TRANSPARENT);
+        table.put("ComboBox.focusColor", TRANSPARENT);
+        table.put("Button[border].enable", false);
+        table.put("Button[focus].color", TRANSPARENT);
     }
 
     @Override
@@ -203,6 +207,8 @@ public class MaterialDarkTheme extends AbstractMaterialTheme {
     }
 
     public String getName() {
-        return "Dark Material";
+        return "Dark Pink Material";
     }
+
+
 }
