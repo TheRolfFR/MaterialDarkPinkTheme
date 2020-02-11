@@ -65,8 +65,8 @@ public class MaterialDarkPinkTheme extends AbstractMaterialTheme {
         this.unselectedCheckBoxIconTable = MaterialImageFactory.getInstance().getImage("white/unchecked_white");
         this.closedIconTree = MaterialImageFactory.getInstance().getImage("right_arrow");
         this.openIconTree = MaterialImageFactory.getInstance().getImage("down_arrow");
-        this.yesCollapsedTaskPane = MaterialImageFactory.getInstance().getImage("yes-collapsed");
-        this.noCollapsedTaskPane = MaterialImageFactory.getInstance().getImage("no-collapsed");
+        this.yesCollapsedTaskPane = MaterialImageFactory.getInstance().getImage("down_arrow");
+        this.noCollapsedTaskPane = MaterialImageFactory.getInstance().getImage("up_arrow");
         this.warningIconOptionPane = MaterialImageFactory.getInstance().getImage("warning");
         this.errorIconIconOptionPane = MaterialImageFactory.getInstance().getImage("error");
         this.questionIconOptionPane = MaterialImageFactory.getInstance().getImage("question");
@@ -143,7 +143,7 @@ public class MaterialDarkPinkTheme extends AbstractMaterialTheme {
         this.arrowButtonOnClickColorScrollBar = MaterialColors.GRAY_800;
         this.mouseHoverColorScrollBar = MaterialColors.GRAY_300;
         this.trackColorSlider = MaterialColors.GRAY_800;
-        this.haloColorSlider = MaterialColors.bleach(MaterialColors.RED_A200, 0.5F);
+        this.haloColorSlider = MaterialColors.bleach(HIGHLIGHT_COLOR, 0.5F);
         this.highlightColorTabbedPane = BACKGROUND_COLOR;
         this.borderHighlightColorTabbedPane = BACKGROUND_COLOR;
         this.focusColorLineTabbedPane = MaterialColors.RED_A400;
