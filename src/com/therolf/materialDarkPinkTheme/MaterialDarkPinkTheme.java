@@ -20,8 +20,7 @@ public class MaterialDarkPinkTheme extends AbstractMaterialTheme {
     private static final ColorUIResource BACKGROUND_COLOR = MaterialColors.GRAY_900;
     private static final ColorUIResource TRANSPARENT = new ColorUIResource(new Color(0, 0, 0, 0));
     private static final ColorUIResource HIGHLIGHT_COLOR = MaterialColors.RED_A400;
-    private static final Color HIGHLIGHT_HOVER = new ColorUIResource(HIGHLIGHT_COLOR.darker()); // need to be color class
-    private static final ColorUIResource HIGHLIGHT_HOVER_COLOR = new ColorUIResource(HIGHLIGHT_HOVER);
+    private static final ColorUIResource HIGHLIGHT_HOVER = new ColorUIResource(HIGHLIGHT_COLOR.darker());
 
     private static final BorderUIResource EMPTY_BORDER = new BorderUIResource(BorderFactory.createEmptyBorder());
 
@@ -115,7 +114,7 @@ public class MaterialDarkPinkTheme extends AbstractMaterialTheme {
         this.textColor = MaterialColors.WHITE;
         this.disableTextColor = MaterialColors.GRAY_500;
         this.buttonBackgroundColor = this.highlightBackgroundPrimary;
-        this.buttonBackgroundColorMouseHover = HIGHLIGHT_HOVER_COLOR;
+        this.buttonBackgroundColorMouseHover = HIGHLIGHT_HOVER;
         this.buttonTextColor = MaterialColors.WHITE;
         this.buttonDefaultBackgroundColorMouseHover = MaterialColors.RED_200;
         this.buttonDefaultBackgroundColor = this.buttonBackgroundColor;
@@ -171,7 +170,7 @@ public class MaterialDarkPinkTheme extends AbstractMaterialTheme {
         this.titleBackgroundGradientEndTaskPane = HIGHLIGHT_COLOR;
         this.titleOverTaskPane = MaterialColors.WHITE;
         this.specialTitleOverTaskPane = MaterialColors.WHITE;
-        this.backgroundTaskPane = HIGHLIGHT_HOVER_COLOR;
+        this.backgroundTaskPane = HIGHLIGHT_HOVER;
         this.borderColorTaskPane = BACKGROUND_COLOR;
         this.contentBackgroundTaskPane = BACKGROUND_COLOR;
         this.selectionBackgroundList = MaterialColors.GRAY_800;
@@ -184,11 +183,15 @@ public class MaterialDarkPinkTheme extends AbstractMaterialTheme {
     public void installUIDefault(UIDefaults table) {
         super.installUIDefault(table);
 
+        table.put("Button[border].enable", false);
+        table.put("Button[focus].color", TRANSPARENT);
+
         //noinspection SpellCheckingInspection
         table.put("ComboBox.unfocusColor", TRANSPARENT);
         table.put("ComboBox.focusColor", TRANSPARENT);
-        table.put("Button[border].enable", false);
-        table.put("Button[focus].color", TRANSPARENT);
+
+        table.put("Separator.background", TRANSPARENT);
+        table.put("Separator.foreground", TRANSPARENT);
     }
 
     @Override
