@@ -6,11 +6,8 @@
  * User Manual available at https://docs.gradle.org/6.2.2/userguide/java_library_plugin.html
  */
 
-import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
-
 plugins {
     `java-library`
-    id("com.github.johnrengelman.shadow") version "2.0.4"
 }
 
 group = "com.therolf"
@@ -26,20 +23,4 @@ dependencies {
 
     //implementation("io.github.vincenzopalazzo:material-ui-swing:1.1.1_pre-release_6.1")
     implementation(files("$projectDir/libs/material-ui-swing-1.1.1_0.2.jar"))
-}
-
-tasks.withType<Jar>() {
-    configurations["compileClasspath"].forEach { file: File ->
-        if(file.name != "material-ui-swing-1.1.1_0.2.jar"){
-            from(zipTree(file.absoluteFile))
-        }
-    }
-}
-
-tasks.withType<ShadowJar> {
-    manifest.attributes.apply {
-        put("Implementation-Title", "MaterialDarkPinkTheme")
-        put("Implementation-Version", version)
-    }
-
 }
